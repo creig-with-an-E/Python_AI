@@ -42,8 +42,14 @@ student_id = 101087294
 #        [0, 1, 1, 0],         [1, 0, 1]]
 #        [1, 0, 0, 1]])
 
+
 def xmatrix(N):
+    arr = np.zeros((N,N), dtype=int)
+    np.fill_diagonal(arr,1)
+    for i in range(N):
+        arr[i, -1-i] = 1
     return np.zeros((N,N), dtype=int)
+
 
 ## Task 3 ######################################################################
 # Write a function that given a 2D array m finds the column with the lowest sum, 
