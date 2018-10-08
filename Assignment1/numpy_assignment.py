@@ -31,7 +31,7 @@ assignment_version = '1.0'
 
 ## Task 1 ###################################################################### 
 # Replace 999 with your student id
-student_id = 999
+student_id = 101087294
 
 ## Task 2 ######################################################################
 # Create an N by N 2D array with 1 on both diagonals and zeros everywhere else. 
