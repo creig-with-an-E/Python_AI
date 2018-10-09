@@ -119,6 +119,11 @@ def fix_gauge_bias(car_data, speed_bias, rpm_bias):
 # such as continuously variable transmission (CVT) and the hybrid transmission
 # in Toyota Prius.
 def was_gear_switched(car_data):
+    averages = car_data[:, 1] / car_data[:, 0]
+    min_val = averages.min()
+    max_val = averages.max()
+    if max_val - min_val >= 10:
+        return True
     return False
 
 ## Task 6 (bonus) ##############################################################
