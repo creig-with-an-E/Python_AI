@@ -90,7 +90,10 @@ def min_row_col(m):
 #
 # FYI: The RPM gauge is called "tachometer"
 def fix_gauge_bias(car_data, speed_bias, rpm_bias):
-    return car_data
+    adjusted_array = car_data.copy()
+    adjusted_array[:, 0] = adjusted_array[:, 0] - speed_bias
+    adjusted_array[:, 1] = adjusted_array[:, 1] - rpm_bias
+    return adjusted_array
 
 ## Task 5
 # Continuing with car data from previous task. In most cars the ratio between
