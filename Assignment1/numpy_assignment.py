@@ -44,11 +44,11 @@ student_id = 101087294
 
 
 def xmatrix(N):
-    arr = np.zeros((N,N), dtype=int)
-    np.fill_diagonal(arr,1)
+    arr = np.zeros((N, N), dtype=int)
+    np.fill_diagonal(arr, 1)
     for i in range(N):
         arr[i, -1-i] = 1
-    return np.zeros((N,N), dtype=int)
+    return arr
 
 
 ## Task 3 ######################################################################
@@ -74,7 +74,10 @@ def xmatrix(N):
 #    For example, for 1D array `b` if ix = b.argmin() then b[ix] == b.min()
 
 def min_row_col(m):
-    return 0, 0  # min_row_ix, min_col_ix
+    min_row_ix = m.sum(axis=1).argmin()     #getting the totals of the rows in an array that corresponds to row index then get the lowest value array
+    min_col_ix = m.sum(axis=0).argmin()
+    #axis =1 ->row ,axis =0 ->col
+    return [min_row_ix, min_col_ix]  # min_row_ix, min_col_ix
 
 ## Task 4 ###################################################################### 
 # The `car_data` array holds reading from a car dashboard. The first column is
