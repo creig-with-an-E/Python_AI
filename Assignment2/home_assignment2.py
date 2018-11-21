@@ -1,6 +1,7 @@
 ################################################################################    
 ## COMP3122 - Home assignment 2 - Due: Tuesday Nov 20, 23:59                  ##
 ################################################################################
+from collections import defaultdict
 
 # Read the instructions below and complete the function for each task.
 #  - The __main__ section at the bottom contains test cases which will also
@@ -31,7 +32,7 @@ assignment_version = '1.0'
 
 ## Task 1 ######################################################################
 # Replace 999 with your student id
-student_id = 999
+student_id = 101087294
 
 
 ## Task 2 - Average-by #########################################################
@@ -55,7 +56,25 @@ student_id = 999
 # Make sure to try edge cases, such as an empty table.
 # No need to check input validity.
 def avgby(tbl, col, by):
-    return {}
+    key =[]
+    vals =[]
+    count =[]
+    avg =[]
+    for x in tbl:
+        temp = str(x[by])
+        if temp not in key:
+            key.append(str(x[by]))
+            vals.append(x[col])
+            count.append(1)
+        else:
+            indx = key.index(temp)
+            vals[indx] += x[col]
+            count[indx] +=1
+
+    for i in range(len(key)):
+        avg.append((vals[i]/count[i]))
+
+    return dict(zip(list(map(int, key)), avg))
 
 
 ## Task 3 - Merge ##############################################################
@@ -77,7 +96,7 @@ def avgby(tbl, col, by):
 #         ['Lisa', 'HR']]
 # right = [['Lisa', 2004],
 #         ['Bob', 2008], 
-#         ['Jake', 2012], 
+#         ['Jake', 2012],
 #         ['Sue', 2014]]
 # merged =   [['Bob', 'Accounting', 'Bob', 2008],
 #             ['Jake', 'Engineering', 'Jake', 2012],
@@ -107,7 +126,16 @@ def avgby(tbl, col, by):
 
 def merge(left, right, left_on, right_on):
     merged = []
+    for x in left:
+        for i in range(len(right)):
+            if x[left_on] == right[i][right_on]:
+                merged.append((x + right[i]))
     return merged
+
+
+def mergehelper(l1, l2):
+    newList = l1 + l2
+    return newList
 
 
 ################################## Tests #######################################
